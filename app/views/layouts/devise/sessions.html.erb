@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Characters</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class = "login">
+    <div id = "login-content" class="container">
+      <div class = "row">
+        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 content-box">
+          <div class = "content-box-inner">
+            <h1 class = "text-center content-title">Log in</h1>
+            <%= link_to user_google_oauth2_omniauth_authorize_path, :class => 'btn btn-primary btn-log' do %>
+              <span class="fa fa-google-plus"></span> Log in with Google
+            <% end %>
+
+            <hr/>
+            <%= form_for(:user, :url => session_path(:user)) do |f| %>
+              <%= f.text_field :email, :class => 'form-control', :placeholder => 'Enter your email' %>
+              <%= f.password_field :password, :class => 'form-control', :placeholder => 'Enter your password' %>
+              <%= f.check_box :remember_me, :class => 'hidden' %>
+              <%= link_to "Forgot your password?", new_password_path(:user), :class => 'forgot' %>
+              <div class = "right">
+              <%= f.submit 'Sign in', :class => 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 lower-content">
+          <p>Don't have an account? <%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-white' %></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
