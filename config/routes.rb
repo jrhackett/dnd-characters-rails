@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :characters
   root 'static_pages#home'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
